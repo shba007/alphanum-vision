@@ -1,0 +1,83 @@
+div.container,
+.canvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  background-color: var(--primary-accent);
+}
+
+div.container {
+  position: relative;
+  height: 100%;
+  box-shadow: 0px 4px 4px 0px var(--shadow);
+}
+
+.input,
+.output {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0.4rem 0.6rem 0.6rem;
+}
+
+.input {
+  align-items: stretch;
+}
+.output {
+  align-items: center;
+}
+
+.canvas {
+  margin: 0 1rem 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: crosshair;
+
+  canvas {
+    width: 336px;
+    height: 336px;
+    border: gray solid 1px;
+    border-radius: 0.6rem;
+    background-image: url("/assets/grid.svg");
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .btn {
+    width: 80px;
+    height: 34px;
+    margin: 0 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-color: var(--secondary);
+    border-radius: 1rem;
+    cursor: pointer;
+
+    &:active {
+      box-shadow: 1px 1px 2px var(--shadow) inset;
+      background-color: var(--secondary);
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  div.container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .canvas canvas {
+    width: 85vw;
+    height: 85vw;
+  }
+}

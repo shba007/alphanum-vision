@@ -1,0 +1,36 @@
+.chart-wrapper {
+  display: flex;
+  width: 704px;
+  height: 384px;
+  margin: 0 1rem;
+  align-items: flex-end;
+  justify-content: center;
+
+  canvas {
+    border-radius: 0 0 0 16px;
+    border-color: var(--secondary);
+    border-style: solid;
+    border-width: 0 0 3px 3px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .chart-wrapper {
+    width: 544px;
+    height: 296px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .chart-wrapper {
+    width: 384px;
+    height: 209px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .chart-wrapper {
+    width: 85vw;
+    height: 46vw;
+  }
+}
