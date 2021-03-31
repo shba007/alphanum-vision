@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DrawableDirective } from './drawable.directive';
+import { environment as env } from './../environments/environment';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -42,9 +43,7 @@ export class AppComponent implements OnInit {
       imageData.data[i + 3] = value;
     }
 
-    const url = 'http://localhost:3000/predict';
-
-    this.http.post(url, imageData).subscribe((response) => {
+    this.http.post(`${env.url}/predict`, imageData).subscribe((response) => {
       this.predictions = Object.values(response);
       // Output
       this.prediction = this.predictions.indexOf(Math.max(...this.predictions));
