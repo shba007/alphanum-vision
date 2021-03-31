@@ -1,7 +1,7 @@
 <h1 align="center">Digit Recognizer</h1>
 <br>
 <p align="center">
-  <img src="client/src/assets/feather.svg" alt="feather-logo" width="120px" height="120px"/>
+  <img src="src/assets/feather.svg" alt="feather-logo" width="120" height="120"/>
 </p>
 <br>
 <p align="center">
