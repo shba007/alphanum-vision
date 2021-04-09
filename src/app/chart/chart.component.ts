@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-chart',
@@ -8,36 +9,41 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class ChartComponent implements OnChanges {
   @Input() data;
 
-  barChartOptions = {
-    scaleShowVerticalLines: false,
+  public barChartType: ChartType = 'bar';
+  public barChartLabels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  public barChartData: ChartDataset[] = [
+    {
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      label: 'Predictions',
+      backgroundColor: '#4c6ef5',
+    },
+  ];
+  public barChartOptions: ChartOptions = {
     responsive: true,
     backgroundColor: '#4c6ef5',
     scales: {
-      xAxes: [
-        {
-          gridLines: {
-            display: false,
-          },
-          ticks: {
-            fontSize: 20,
-            fontFamily: 'Poppins',
+      x: {
+        grid: { display: false },
+        ticks: {
+          font: {
+            size: 20,
+            family: 'Poppins',
           },
         },
-      ],
-      yAxes: [
-        {
-          display: false,
-          gridLines: {
-            display: false,
-          },
-        },
-      ],
+      },
+      y: {
+        display: true,
+        suggestedMin: 0,
+        suggestedMax: 100,
+        grid: { display: true },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
     },
   };
-  barChartLabels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  barChartType = 'bar';
-  barChartLegend = false;
-  barChartData: any;
 
   ngOnChanges() {
     this.barChartData = [

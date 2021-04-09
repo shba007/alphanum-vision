@@ -45,9 +45,12 @@ export class AppComponent implements OnInit {
 
     this.http.post(`${env.url}/predict`, imageData).subscribe((response) => {
       this.predictions = Object.values(response);
+      this.predictions = this.predictions.map((prediction) => {
+        return Math.round(prediction * 10000) / 100;
+      });
       // Output
       this.prediction = this.predictions.indexOf(Math.max(...this.predictions));
-      this.confidence = Math.round(Math.max(...this.predictions) * 10000) / 100;
+      this.confidence = Math.max(...this.predictions);
     });
   }
 
