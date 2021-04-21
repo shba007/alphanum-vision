@@ -1,0 +1,105 @@
+svg {
+  --loader-shade-main: hsl(218, 96%, 64%);
+  --loader-shade-1: hsl(218, 23%, 46%);
+  --loader-shade-2: hsl(218, 46%, 24%);
+
+  width: 256px;
+  height: 256px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hexagon {
+  fill: var(--loader-shade-main);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  position: absolute;
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.center {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.side-1 {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+}
+
+.side-2 {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.4s;
+}
+
+.side-3 {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.6s;
+}
+
+.side-1.hexagon {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+}
+
+.side-2.hexagon {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+}
+
+.side-3.hexagon {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  50% {
+    -webkit-transform: scale(0.01);
+    transform: scale(0.01);
+  }
+
+  100% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade {
+  0% {
+    fill: var(--loader-shade-main);
+  }
+
+  50% {
+    fill: var(--loader-shade-1);
+  }
+
+  100% {
+    fill: var(--loader-shade-main);
+  }
+}

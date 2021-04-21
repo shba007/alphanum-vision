@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DrawableDirective } from './drawable.directive';
-import { environment as env } from './../environments/environment';
-
 import { HttpClient } from '@angular/common/http';
+
+import { environment as env } from './../environments/environment';
+import { DrawableDirective } from './drawable.directive';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +16,20 @@ export class AppComponent implements OnInit {
   prediction: any;
   confidence: any;
 
+  isLoading = true;
+
   constructor(private http: HttpClient) {}
   ngOnInit() {
     this.predictions = [];
     this.prediction = null;
     this.confidence = null;
+
+    // Wake up server by a fake call
+    this.predict({
+      data: new Uint8ClampedArray(3136).fill(0),
+      height: 56,
+      width: 56,
+    });
   }
 
   async predict(imageData: ImageData) {
@@ -44,13 +53,19 @@ export class AppComponent implements OnInit {
     }
 
     this.http.post(`${env.url}/predict`, imageData).subscribe((response) => {
-      this.predictions = Object.values(response);
-      this.predictions = this.predictions.map((prediction) => {
-        return Math.round(prediction * 10000) / 100;
-      });
-      // Output
-      this.prediction = this.predictions.indexOf(Math.max(...this.predictions));
-      this.confidence = Math.max(...this.predictions);
+      if (this.isLoading) {
+        this.isLoading = false;
+      } else {
+        this.predictions = Object.values(response);
+        this.predictions = this.predictions.map((prediction) => {
+          return Math.round(prediction * 10000) / 100;
+        });
+        // Output
+        this.prediction = this.predictions.indexOf(
+          Math.max(...this.predictions)
+        );
+        this.confidence = Math.max(...this.predictions);
+      }
     });
   }
 

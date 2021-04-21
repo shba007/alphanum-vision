@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
+import { LoaderComponent } from './loader/loader.component';
 
 import { DrawableDirective } from './drawable.directive';
 import { BaseChartDirective } from './chart/base-chart.directive';
@@ -12,6 +13,7 @@ import { BaseChartDirective } from './chart/base-chart.directive';
   declarations: [
     AppComponent,
     ChartComponent,
+    LoaderComponent,
     DrawableDirective,
     BaseChartDirective,
   ],

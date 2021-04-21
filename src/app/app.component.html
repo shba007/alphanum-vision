@@ -1,4 +1,5 @@
-<div class="container">
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="container" *ngIf="!isLoading">
   <div class="input">
     <div class="canvas">
       <h4>Write Here</h4>
